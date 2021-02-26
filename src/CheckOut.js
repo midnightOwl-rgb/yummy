@@ -10,7 +10,8 @@ export default function CheckOut() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        My Bag&nbsp;
+        <i className="fas fa-shopping-bag"></i>
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -20,10 +21,12 @@ export default function CheckOut() {
         <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Close&nbsp;
+            <i className="fal fa-window-close"></i>
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Order&nbsp;
+            <i className="fas fa-shopping-bag"></i>
           </Button>
         </Modal.Footer>
       </Modal>

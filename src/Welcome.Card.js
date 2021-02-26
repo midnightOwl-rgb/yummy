@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, Alert } from "react-bootstrap";
 import RestaurantCarousel from "./RestaurantCarousel";
 import CheckOut from "./CheckOut";
+import MenuItem from "./Menu_Item";
 
 export default function WelcomeCard() {
   const [user, setUser] = useState({});
@@ -43,13 +44,66 @@ export default function WelcomeCard() {
     ],
   });
 
+  const dishes = [
+    {
+      name: "tamale",
+      price: 9,
+      description: "delicious como npo otro",
+      images: [
+        {
+          name: "Dish one",
+          about: "We got food",
+          img_link:
+            "https://www.bostonmagazine.com/wp-content/uploads/sites/2/2018/10/Terra-Jim-Brueckner.jpg",
+        },
+        {
+          name: "Dish two",
+          about: "some other image",
+          img_link:
+            "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/11/14/0/FN_healthy-fast-food-applebees-steak_s4x3.jpg.rend.hgtvcom.441.331.suffix/1510694267044.jpeg",
+        },
+        {
+          name: "Dish three",
+          about: "another image?",
+          img_link:
+            "https://cdn.vox-cdn.com/thumbor/8hfV7puK-JAMl_SIIV-HjJeyh1U=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19860867/91698134_10101489731717528_8232053826425716736_o.jpg",
+        },
+      ],
+    },
+    {
+      name: "tamale",
+      price: 9,
+      description: "delicious como npo otro",
+      images: [
+        {
+          name: "Dish one",
+          about: "We got food",
+          img_link:
+            "https://www.bostonmagazine.com/wp-content/uploads/sites/2/2018/10/Terra-Jim-Brueckner.jpg",
+        },
+        {
+          name: "Dish two",
+          about: "some other image",
+          img_link:
+            "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/11/14/0/FN_healthy-fast-food-applebees-steak_s4x3.jpg.rend.hgtvcom.441.331.suffix/1510694267044.jpeg",
+        },
+        {
+          name: "Dish three",
+          about: "another image?",
+          img_link:
+            "https://cdn.vox-cdn.com/thumbor/8hfV7puK-JAMl_SIIV-HjJeyh1U=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19860867/91698134_10101489731717528_8232053826425716736_o.jpg",
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="container mt-2">
       <Alert variant="light">
         {user ? `Welcome, ${user.name}` : <a href="/login">Log In</a>}
       </Alert>
 
-      <Card>
+      <Card className="bg bg-light">
         <Card.Body>
           <Card.Title>{restaurant ? `${restaurant.name}` : ""}</Card.Title>
           <Card.Text>
@@ -57,13 +111,20 @@ export default function WelcomeCard() {
           </Card.Text>
           <hr />
           <div className="d-flex justify-content-center">
-            <RestaurantCarousel restaurant={restaurant} />
+            <RestaurantCarousel images={restaurant.images} />
           </div>
-          <div className="container mt-3">
+          <div className="my-3">
             <CheckOut />
           </div>
         </Card.Body>
       </Card>
+      <hr className="my-4" />
+      {dishes.map((dish, inx) => (
+        <>
+          <MenuItem dish={dish} key={inx} />
+          <br />
+        </>
+      ))}
     </div>
   );
 }
